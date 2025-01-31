@@ -1,0 +1,278 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  text-decoration: none;
+  border: none;
+  outline: none;
+  font-family: 'Poppins', sans-serif;
+}
+
+body {
+  background-color: #060517;
+  width: 100%;
+  height: 100vh;
+  overflow-x: hidden;
+}
+
+html {
+  font-size: 62.5%;
+}
+
+header {
+  padding: 20px;
+  display: flex;
+  justify-content: space-between;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  background-color: #060517;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  z-index: 1000;
+}
+
+.logo {
+  font-size: 3rem;
+  color: #2d2cb0;
+  cursor: pointer;
+  transition: color 0.3s ease;
+}
+
+.logo:hover {
+  color: #4d4cc6;
+}
+
+nav {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+}
+
+nav a {
+  color: #ffffff;
+  font-size: 2rem;
+  text-decoration: none;
+  transition: color 0.3s ease;
+}
+
+nav a:hover {
+  color: #2d2cb0;
+  text-decoration: underline;
+}
+
+section {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10rem;
+  min-height: 100vh;
+  padding: 5rem 9%;
+}
+
+.hom {
+  background: linear-gradient(135deg, #2d2cb0, #060517);
+  color: #ffffff;
+  padding-top: 80px; /* Add padding to account for fixed header */
+}
+
+h1 {
+  font-size: 6rem;
+  color: #ffffff;
+  transition: color 0.3s ease;
+  text-align: center;
+  text-decoration: underline;
+  
+}
+
+p {
+  font-size: 2rem;
+  color: #ffffff;
+  transition: color 0.3s ease;
+  margin: 10px 10px;
+  text-align: center;
+}
+
+.hom p {
+  max-width: 600px;
+}
+
+.hom .home-content {
+  text-align: left;
+}
+
+.social-icons {
+  display: flex;
+  gap: 1rem;
+  margin-top: 1rem;
+}
+
+.social-icons a {
+  display: inline-flex;
+  justify-content: center;
+  align-items: center;
+  width: 4rem;
+  height: 4rem;
+  background-color: #060517;
+  border: 0.2rem solid #2d2cb0;
+  font-size: 2rem;
+  border-radius: 50%;
+  transition: 0.3s ease;
+  color: #2d2cb0;
+}
+
+.social-icons a:hover {
+  color: black;
+  transform: scale(1.3) translateY(-5px);
+  background-color: #2d2cb0;
+  box-shadow: 0 0 25px #2d2cb0;
+}
+
+.home-img {
+  border-radius: 50%;
+}
+
+.home-img img {
+  position: relative;
+  width: 32vw;
+  border-radius: 50%;
+  box-shadow: 0 0 25px #2d2cb0;
+  cursor: pointer;
+  transition: 0.2s linear;
+}
+
+.home-img img:hover {
+  transform: scale(1.1);
+}
+
+.btn {
+  display: inline-block;
+  margin-top: 2rem;
+  padding: 1rem 2.8rem;
+  background-color: #060517;
+  border-radius: 4rem;
+  font-size: 1.6rem;
+  color: #2d2cb0;
+  letter-spacing: 0.3rem;
+  font-weight: 600;
+  border: 2px solid #2d2cb0;
+  transition: 0.3s ease;
+  cursor: pointer;
+}
+
+.btn:hover {
+  transform: scale(1.1);
+  background-color: #2d2cb0;
+  color: #060517;
+  box-shadow: 0 0 25px #2d2cb0;
+}
+
+#about, #projects, #skills, #contact {
+  padding: 5rem 9%;
+  text-align: center;
+  color: #ffffff;
+}
+
+#about h2, #projects h2, #skills h2, #contact h2 {
+  font-size: 4rem;
+  margin-bottom: 2rem;
+  color: #2d2cb0;
+}
+
+.project-card {
+  background-color: #1b1d27;
+  padding: 2rem;
+  border-radius: 1rem;
+  margin-bottom: 2rem;
+}
+
+.project-card h3 {
+  font-size: 2.5rem;
+  color: #2d2cb0;
+}
+
+.project-card p {
+  font-size: 1.6rem;
+  color: #7ba0ce;
+}
+
+.contact-info {
+  font-size: 2rem;
+  color: #ffffff;
+}
+
+.contact-info p {
+  margin: 1rem 0;
+}
+
+footer {
+  background-color: #060517;
+  padding: 2rem 9%;
+  text-align: center;
+  color: #ffffff;
+}
+
+footer p {
+  font-size: 1.4rem;
+}
+
+footer .social-icons {
+  margin-top: 1rem;
+}
+
+footer .social-icons a {
+  margin: 0 1rem;
+  color: #2d2cb0;
+  transition: color 0.3s ease;
+}
+
+footer .social-icons a:hover {
+  color: #4d4cc6;
+}
+
+@media screen and (max-width: 768px) {
+  body {
+    font-size: 50%;
+  }
+
+  header {
+    flex-direction: column;
+    align-items: center;
+    padding: 10px;
+  }
+
+  nav {
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 10px;
+  }
+
+  section {
+    flex-direction: column;
+    gap: 5rem;
+    padding: 3rem 5%;
+  }
+
+  .home-img img {
+    width: 90%;
+    max-width: 300px;
+  }
+
+  h1 {
+    font-size: 3.5rem;
+    text-align: center;
+  }
+
+  p {
+    font-size: 1.6rem;
+    text-align: center;
+  }
+
+  .social-icons {
+    justify-content: center;
+  }
+
+  .home-content, .home-img {
+    width: 90%;
+  }
+}
