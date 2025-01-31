@@ -1,6 +1,5 @@
 CREATE DATABASE students_management;
 USE students_management;
-DROP DATABASE students_management;
 
 
 CREATE TABLE students (
