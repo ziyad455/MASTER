@@ -1,12 +1,8 @@
-function greet(name) {
-  console.log("Hello, " + name + "!");
-}
+console.log("gegegi")
 
-console.log("Hello, world!");
-greet("Osaka");
+// Importing express module
 
-try {
-  throw new Error("An error occurred!");
-} catch (error) {
-  console.error("An error occurred:", error.message);
-}
+const express = require('express');
+
+// Creating an instance of express
+  
