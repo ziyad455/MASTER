@@ -5,9 +5,9 @@ import mysql.connector
 
 conn = mysql.connector.connect(
     host="localhost",
-    user="root",
-    password="ziyad123",
-    database="students_management"
+    user="username",
+    password="yourpassword",
+    database="yourdatabasename"
 )
 
 cursor = conn.cursor()
