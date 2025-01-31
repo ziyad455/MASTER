@@ -38,4 +38,3 @@ INSERT INTO subject(id, subject_name)
     VALUES (1, 'algorithm'), (2, 'python'), (3, 'English'), (4, 'base de donne'), (5, 'soft skiles');
 
 
-SELECT * FROM studentS

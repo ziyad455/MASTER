@@ -2,7 +2,7 @@ import tkinter as tk
 from tkinter import messagebox
 import mysql.connector
 
-# Connect to the database
+
 conn = mysql.connector.connect(
     host="localhost",
     user="root",
@@ -164,20 +164,29 @@ def add_exam():
         subject_id = entry_subject_id.get()
         exam_score = entry_score.get()
 
+        # Fetch all student IDs
         cursor.execute("SELECT id FROM students")
         student_ids = [row[0] for row in cursor.fetchall()]
 
+        # Fetch all subject IDs
         cursor.execute("SELECT id FROM subject")
         subject_ids = [row[0] for row in cursor.fetchall()]
+
+        # Fetch the subjects for the specific student
+        cursor.execute("SELECT subject_id FROM student_subject WHERE student_id = %s", (student_id,))
+        student_subjects = [row[0] for row in cursor.fetchall()]
 
         if not student_id or not subject_id or not exam_score:
             messagebox.showerror("Error", "Please fill all fields")
             return
-        elif int(student_id) not in student_ids:
+        elif not student_id.isdigit() or int(student_id) not in student_ids:
             messagebox.showerror("Error", "Invalid Student ID")
             return
-        elif int(subject_id) not in subject_ids:
+        elif not subject_id.isdigit() or int(subject_id) not in subject_ids:
             messagebox.showerror("Error", "Invalid Subject ID")
+            return
+        elif int(subject_id) not in student_subjects:
+            messagebox.showerror("Error", "The student is not enrolled in this subject")
             return
         else:
             try:
@@ -216,7 +225,6 @@ def add_exam():
 
     back_button = tk.Button(root3, text="Back to Main Menu", command=root3.destroy, bg=button_color, fg=button_text_color)
     back_button.pack(padx=10, pady=10)
-
 def show_student():
     def fetch_student():
         student_id = entry_student_id.get()
@@ -464,40 +472,6 @@ def view_exam_result():
     back_button = tk.Button(root7, text="Back to Main Menu", command=root7.destroy, bg=button_color, fg=button_text_color)
     back_button.pack(padx=10, pady=10)
     
-def view_exam_result():
-    def fetch_exam_result():
-        student_id = entry_student_id.get()
-
-        cursor.execute("SELECT * FROM students WHERE id = %s", (student_id,))
-        student = cursor.fetchone()
-
-        if not student:
-            messagebox.showerror("Error", "Student not found")
-            return
-
-        # Fetch exam scores
-        cursor.execute(
-            "SELECT exams.score, subject.subject_name FROM exams "
-            "JOIN subject ON subject.id = exams.subject_id "
-            "WHERE exams.student_id = %s", (student_id,)
-        )
-        exams = cursor.fetchall()
-
-        if not exams:
-            messagebox.showinfo("Exam Results", "No exam records found for this student.")
-            return
-
-        passed_exams = [exam for exam in exams if exam[0] > 10]
-        avg_score = sum(exam[0] for exam in exams) / len(exams)
-        result = "Passed" if avg_score > 10 else "Failed"
-        
-        output = f"Student ID: {student_id}\nName: {student[1]} {student[2]}\n"
-        output += f"Average Score: {avg_score:.2f}\nResult: {result}\n\n"
-        output += "Exam Scores:\n"
-        for exam in exams:
-            output += f"{exam[1]}: {exam[0]}\n"
-
-        messagebox.showinfo("Exam Results", output)
 
     root7 = tk.Toplevel()
     root7.title("View Exam Result")
@@ -526,6 +500,6 @@ tk.Button(button_frame, text="Show Student Information by ID", command=show_stud
 tk.Button(button_frame, text="Delete Student", command=delete_student, bg=button_color, fg=button_text_color, width=button_width).pack(pady=5)
 tk.Button(button_frame, text="Modify Student", command=modify_student, bg=button_color, fg=button_text_color, width=button_width).pack(pady=5)
 tk.Button(button_frame, text="View Exam Result", command=view_exam_result, bg=button_color, fg=button_text_color, width=button_width).pack(pady=5)
-tk.Button(button_frame, text="View Exam Result", command=view_exam_result, bg=button_color, fg=button_text_color, width=button_width).pack(pady=5)                                                                                  
+                                                                                 
 
 window.mainloop()
