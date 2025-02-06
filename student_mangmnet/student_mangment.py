@@ -6,20 +6,20 @@ import customtkinter as ctk
 
 conn = mysql.connector.connect(
     host="localhost",
-    user="root",
-    password="ziyad123",
-    database="students_management"
+    user="user name",
+    password="your password",
+    database="database name"
 )
 
 cursor = conn.cursor()
 
 
-ctk.set_appearance_mode("dark")
-ctk.set_default_color_theme("dark-blue")
+ctk.set_appearance_mode("light")
+ctk.set_default_color_theme("blue")
 
 window = ctk.CTk()
 window.title("Student Management System")
-window.geometry("800x600")
+window.geometry("600x600")
 
 
 main_frame = ctk.CTkFrame(window)
@@ -42,11 +42,15 @@ def show_frame(frame):
 
 
 def main_menu():
+    window.geometry("600x600")
     show_frame(main_frame)
 
 
 def add_student():
     show_frame(add_student_frame)
+    window.geometry("400x400")
+ 
+    
 
     def add_student_to_db():
         first_name = entry_first_name.get()
@@ -79,37 +83,49 @@ def add_student():
         entry_age.delete(0, tk.END)
         group_var.set('')
 
+
+    add_student_frame.grid_rowconfigure((0, 7), weight=1)
+    add_student_frame.grid_columnconfigure((0, 2), weight=1)
+
+
     label_first_name = ctk.CTkLabel(add_student_frame, text="First Name")
-    label_first_name.grid(row=0, column=0, padx=10, pady=10)
+    label_first_name.grid(row=1, column=0, padx=10, pady=10, sticky="e")
     entry_first_name = ctk.CTkEntry(add_student_frame)
-    entry_first_name.grid(row=0, column=1, padx=10, pady=10)
+    entry_first_name.grid(row=1, column=1, padx=10, pady=10, sticky="w")
 
     label_last_name = ctk.CTkLabel(add_student_frame, text="Last Name")
-    label_last_name.grid(row=1, column=0, padx=10, pady=10)
+    label_last_name.grid(row=2, column=0, padx=10, pady=10, sticky="e")
     entry_last_name = ctk.CTkEntry(add_student_frame)
-    entry_last_name.grid(row=1, column=1, padx=10, pady=10)
+    entry_last_name.grid(row=2, column=1, padx=10, pady=10, sticky="w")
 
     label_age = ctk.CTkLabel(add_student_frame, text="Age")
-    label_age.grid(row=2, column=0, padx=10, pady=10)
+    label_age.grid(row=3, column=0, padx=10, pady=10, sticky="e")
     entry_age = ctk.CTkEntry(add_student_frame)
-    entry_age.grid(row=2, column=1, padx=10, pady=10)
+    entry_age.grid(row=3, column=1, padx=10, pady=10, sticky="w")
 
     label_group = ctk.CTkLabel(add_student_frame, text="Group")
-    label_group.grid(row=3, column=0, padx=10, pady=10)
+    label_group.grid(row=4, column=0, padx=10, pady=10, sticky="e")
     group_var = tk.StringVar()
     groups = ['DEV101', 'DEV102', 'DEV103', 'DEV104', 'DEV105', 'DEV106', 'DEV107', 'DEV108', 'DEV109']
     group_var.set(groups[0])
     group_menu = ctk.CTkOptionMenu(add_student_frame, variable=group_var, values=groups)
-    group_menu.grid(row=3, column=1, padx=10, pady=10)
+    group_menu.grid(row=4, column=1, padx=10, pady=10, sticky="w")
+
 
     submit_button = ctk.CTkButton(add_student_frame, text="Submit", command=add_student_to_db)
-    submit_button.grid(row=4, column=0, columnspan=2, padx=10, pady=10)
+    submit_button.grid(row=5, column=0, columnspan=2, pady=10)
 
     back_button = ctk.CTkButton(add_student_frame, text="Back to Main Menu", command=main_menu)
-    back_button.grid(row=5, column=0, columnspan=2, padx=10, pady=10)
+    back_button.grid(row=6, column=0, columnspan=2, pady=10)
+
+
+    add_student_frame.grid_columnconfigure(0, weight=1)
+    add_student_frame.grid_columnconfigure(1, weight=1)
+
 
 def add_subject():
     show_frame(add_subject_frame)
+    window.geometry("400x400")
 
     def add_subject_to_group():
         group = group_var.get()
@@ -134,70 +150,100 @@ def add_subject():
         group_var.set(groups[0])
         list_subject.selection_clear(0, tk.END)
 
+
     label_group = ctk.CTkLabel(add_subject_frame, text="Select Group")
-    label_group.pack(padx=10, pady=10)
+    label_group.grid(row=0, column=0, padx=10, pady=(10, 5), sticky="w")  
     group_var = tk.StringVar()
     groups = ['DEV101', 'DEV102', 'DEV103', 'DEV104', 'DEV105', 'DEV106', 'DEV107', 'DEV108', 'DEV109']
     group_var.set(groups[0])
     group_menu = ctk.CTkOptionMenu(add_subject_frame, variable=group_var, values=groups)
-    group_menu.pack(padx=10, pady=10)
+    group_menu.grid(row=0, column=1, padx=10, pady=(5, 10), sticky="w") 
 
+  
     label_subject = ctk.CTkLabel(add_subject_frame, text="Select Subjects")
-    label_subject.pack(padx=10, pady=10)
+    label_subject.grid(row=1, column=0, padx=10, pady=(10, 5), sticky="w")  
 
-    list_subject = tk.Listbox(add_subject_frame, selectmode=tk.MULTIPLE)
+ 
+    list_subject = tk.Listbox(add_subject_frame, selectmode=tk.MULTIPLE, height=6, bg="#f0f0f0", font=("Arial", 12), selectbackground="#4CAF50")
     cursor.execute("SELECT id, subject_name FROM subject")
     subjects = cursor.fetchall()
     subjects_list = [(subject[0], subject[1]) for subject in subjects]
 
     for index, subject in enumerate(subjects_list):
         list_subject.insert(index, subject[1])
-    list_subject.pack(padx=10, pady=10)
+    list_subject.grid(row=2, column=0, columnspan=2, padx=10, pady=(5, 10))  
 
+  
     submit_button = ctk.CTkButton(add_subject_frame, text="Submit", command=add_subject_to_group)
-    submit_button.pack(padx=10, pady=10)
+    submit_button.grid(row=3, column=0, columnspan=2, padx=10, pady=(5, 10), sticky="nsew")  
 
+  
     back_button = ctk.CTkButton(add_subject_frame, text="Back to Main Menu", command=main_menu)
-    back_button.pack(padx=10, pady=10)
+    back_button.grid(row=4, column=0, columnspan=2, padx=10, pady=(5, 10), sticky="nsew")  
 
 
 def exam_menu():
     show_frame(exam_menu_frame)
+    window.geometry("250x250")
 
     add_exam_button = ctk.CTkButton(exam_menu_frame, text="Add Exam", command=add_exam)
-    add_exam_button.pack(padx=10, pady=10)
+    add_exam_button.grid(row=0, column=0, padx=10, pady=10, sticky="nsew")
 
     view_exam_button = ctk.CTkButton(exam_menu_frame, text="View Exam", command=view_exam)
-    view_exam_button.pack(padx=10, pady=10)
+    view_exam_button.grid(row=1, column=0, padx=10, pady=10, sticky="nsew")
 
     back_button = ctk.CTkButton(exam_menu_frame, text="Back to Main Menu", command=main_menu)
-    back_button.pack(padx=10, pady=10)
+    back_button.grid(row=2, column=0, padx=10, pady=10, sticky="nsew")
+
+def exam_menu():
+    show_frame(exam_menu_frame)
+    window.geometry("400x400")
+
+    add_exam_button = ctk.CTkButton(exam_menu_frame, text="Add Exam", command=add_exam)
+    add_exam_button.grid(row=0, column=0, padx=10, pady=10, sticky="nsew")
+
+    view_exam_button = ctk.CTkButton(exam_menu_frame, text="View Exam", command=view_exam)
+    view_exam_button.grid(row=1, column=0, padx=10, pady=10, sticky="nsew")
+
+    back_button = ctk.CTkButton(exam_menu_frame, text="Back to Main Menu", command=main_menu)
+    back_button.grid(row=2, column=0, padx=10, pady=10, sticky="nsew")
 
 def add_exam():
     show_frame(add_exam_frame)
+    window.geometry("400x400")
+    messagebox.showinfo("Exam","make sure you know student id or go to show students")
 
     def fetch_subjects():
         student_id = entry_student_id.get()
         cursor.execute("SELECT group_name FROM students WHERE id = %s", (student_id,))
         student_group = cursor.fetchone()
+
         if not student_group:
             messagebox.showerror("Error", "Invalid Student ID")
             return
 
-        cursor.execute("SELECT subject.id, subject.subject_name FROM subject "
-                       "JOIN group_subject ON subject.id = group_subject.subject_id "
-                       "WHERE group_subject.group_name = %s", (student_group[0],))
+        cursor.execute("""
+            SELECT subject.id, subject.subject_name 
+            FROM subject 
+            JOIN group_subject ON subject.id = group_subject.subject_id 
+            WHERE group_subject.group_name = %s
+        """, (student_group[0],))
         subjects = cursor.fetchall()
 
         if not subjects:
             messagebox.showerror("Error", "No subjects found for the student's group")
             return
 
-        for subject_id, subject_name in subjects:
-            label = ctk.CTkLabel(add_exam_frame, text=subject_name)
-            label.pack(padx=10, pady=5)
+
+        for widget in add_exam_frame.winfo_children():
+            if isinstance(widget, ctk.CTkLabel) or isinstance(widget, ctk.CTkEntry):
+                widget.destroy()
+
+ 
+        for idx, (subject_id, subject_name) in enumerate(subjects):
+            ctk.CTkLabel(add_exam_frame, text=subject_name).grid(row=2 + idx, column=0, padx=10, pady=5, sticky="w")
             entry = ctk.CTkEntry(add_exam_frame)
-            entry.pack(padx=10, pady=5)
+            entry.grid(row=2 + idx, column=1, padx=10, pady=5, sticky="ew")
             entry_scores[subject_id] = entry
 
     def submit_exam_to_db():
@@ -211,7 +257,10 @@ def add_exam():
             for subject_id, entry in entry_scores.items():
                 score = entry.get()
                 if score:
-                    cursor.execute("REPLACE INTO exams (student_id, subject_id, score) VALUES (%s, %s, %s)", (student_id, subject_id, score))
+                    cursor.execute("""
+                        REPLACE INTO exams (student_id, subject_id, score) 
+                        VALUES (%s, %s, %s)
+                    """, (student_id, subject_id, score))
             conn.commit()
             messagebox.showinfo("Success", "Exam added/updated successfully!")
             clear_fields()
@@ -225,33 +274,37 @@ def add_exam():
 
     entry_scores = {}
 
-    ctk.CTkLabel(add_exam_frame, text="Student ID").pack(padx=10, pady=10)
+    ctk.CTkLabel(add_exam_frame, text="Student ID").grid(row=0, column=0, padx=10, pady=10, sticky="w")
     entry_student_id = ctk.CTkEntry(add_exam_frame)
-    entry_student_id.pack(padx=10, pady=10)
+    entry_student_id.grid(row=0, column=1, padx=10, pady=10, sticky="ew")
 
     fetch_button = ctk.CTkButton(add_exam_frame, text="Fetch Subjects", command=fetch_subjects)
-    fetch_button.pack(padx=10, pady=10)
+    fetch_button.grid(row=1, column=0, columnspan=2, padx=10, pady=10)
 
     submit_button = ctk.CTkButton(add_exam_frame, text="Submit", command=submit_exam_to_db)
-    submit_button.pack(padx=10, pady=10)
+    submit_button.grid(row=100, column=0, columnspan=2, padx=10, pady=10)
 
     back_button = ctk.CTkButton(add_exam_frame, text="Back to Exam Menu", command=exam_menu)
-    back_button.pack(padx=10, pady=10)
+    back_button.grid(row=101, column=0, columnspan=2, padx=10, pady=10)
 
 
 def view_exam():
     show_frame(view_exam_frame)
+    window.geometry("400x400")
 
-    def fetch_subjects():
+    def fetch_subjects(*args): 
         group = group_var.get()
-        cursor.execute("SELECT subject.id, subject.subject_name FROM subject "
-                       "JOIN group_subject ON subject.id = group_subject.subject_id "
-                       "WHERE group_subject.group_name = %s", (group,))
+        cursor.execute("""
+            SELECT subject.id, subject.subject_name 
+            FROM subject 
+            JOIN group_subject ON subject.id = group_subject.subject_id 
+            WHERE group_subject.group_name = %s
+        """, (group,))
         subjects = cursor.fetchall()
         subject_names = [subject[1] for subject in subjects]
-        # Recreate subject_menu with new values
-        subject_menu = ctk.CTkOptionMenu(view_exam_frame, variable=subject_var, values=subject_names)
-        subject_menu.pack(padx=10, pady=10)
+
+   
+        subject_menu.configure(values=subject_names)
 
     def fetch_exam_results():
         group = group_var.get()
@@ -260,9 +313,12 @@ def view_exam():
         cursor.execute("SELECT subject.id FROM subject WHERE subject_name = %s", (subject_name,))
         subject_id = cursor.fetchone()[0]
 
-        cursor.execute("SELECT students.id, students.first_name, students.last_name, exams.score FROM students "
-                       "JOIN exams ON students.id = exams.student_id "
-                       "WHERE students.group_name = %s AND exams.subject_id = %s", (group, subject_id))
+        cursor.execute("""
+            SELECT students.id, students.first_name, students.last_name, exams.score 
+            FROM students 
+            JOIN exams ON students.id = exams.student_id 
+            WHERE students.group_name = %s AND exams.subject_id = %s
+        """, (group, subject_id))
         results = cursor.fetchall()
 
         if not results:
@@ -275,28 +331,40 @@ def view_exam():
 
         messagebox.showinfo("Exam Results", output)
 
+
     label_group = ctk.CTkLabel(view_exam_frame, text="Select Group")
-    label_group.pack(padx=10, pady=10)
+    label_group.grid(row=0, column=0, padx=10, pady=10)
+    
     group_var = tk.StringVar()
     groups = ['DEV101', 'DEV102', 'DEV103', 'DEV104', 'DEV105', 'DEV106', 'DEV107', 'DEV108', 'DEV109']
     group_var.set(groups[0])
-    group_menu = ctk.CTkOptionMenu(view_exam_frame, variable=group_var, values=groups, command=lambda x: fetch_subjects())
-    group_menu.pack(padx=10, pady=10)
+
+    group_menu = ctk.CTkOptionMenu(view_exam_frame, variable=group_var, values=groups, command=fetch_subjects)
+    group_menu.grid(row=0, column=1, padx=10, pady=10)
+
 
     label_subject = ctk.CTkLabel(view_exam_frame, text="Select Subject")
-    label_subject.pack(padx=10, pady=10)
+    label_subject.grid(row=1, column=0, padx=10, pady=10)
+    
     subject_var = tk.StringVar()
     subject_menu = ctk.CTkOptionMenu(view_exam_frame, variable=subject_var, values=[])
-    subject_menu.pack(padx=10, pady=10)
+    subject_menu.grid(row=1, column=1, padx=10, pady=10)
+
 
     fetch_button = ctk.CTkButton(view_exam_frame, text="Fetch Results", command=fetch_exam_results)
-    fetch_button.pack(padx=10, pady=10)
+    fetch_button.grid(row=2, column=0, columnspan=2, padx=10, pady=10)
+
 
     back_button = ctk.CTkButton(view_exam_frame, text="Back to Exam Menu", command=exam_menu)
-    back_button.pack(padx=10, pady=10)
+    back_button.grid(row=3, column=0, columnspan=2, padx=10, pady=10)
+
+
+    fetch_subjects()
 
 def show_student():
     show_frame(show_student_frame)
+    messagebox.showinfo("Exam","make sure you know student id or go to show students")
+    window.geometry("300x300")
 
     def fetch_student():
         student_id = entry_student_id.get()
@@ -332,19 +400,21 @@ def show_student():
 
         messagebox.showinfo("Student Info", output)
 
-    ctk.CTkLabel(show_student_frame, text="Enter Student ID").pack(padx=10, pady=10)
+    
+    ctk.CTkLabel(show_student_frame, text="Enter Student ID").grid(row=0, column=0, padx=10, pady=10, sticky="w")
     entry_student_id = ctk.CTkEntry(show_student_frame)
-    entry_student_id.pack(padx=10, pady=10)
+    entry_student_id.grid(row=0, column=1, padx=10, pady=10)
 
     fetch_button = ctk.CTkButton(show_student_frame, text="Fetch Info", command=fetch_student)
-    fetch_button.pack(padx=10, pady=10)
+    fetch_button.grid(row=1, column=0, columnspan=2, padx=10, pady=10)
 
     back_button = ctk.CTkButton(show_student_frame, text="Back to Main Menu", command=main_menu)
-    back_button.pack(padx=10, pady=10)
-
+    back_button.grid(row=2, column=0, columnspan=2, padx=10, pady=10)
 
 def delete_student():
     show_frame(delete_student_frame)
+    messagebox.showinfo("Exam","make sure you know student id or go to show students")
+    window.geometry("300x300")
 
     def delete():
         student_id = entry_student_id.get()
@@ -367,46 +437,65 @@ def delete_student():
     def clear_fields():
         entry_student_id.delete(0, tk.END)
 
-    ctk.CTkLabel(delete_student_frame, text="Enter Student ID").pack(padx=10, pady=10)
+    ctk.CTkLabel(delete_student_frame, text="Enter Student ID").grid(row=0, column=0, padx=10, pady=10, sticky="w")
     entry_student_id = ctk.CTkEntry(delete_student_frame)
-    entry_student_id.pack(padx=10, pady=10)
+    entry_student_id.grid(row=0, column=1, padx=10, pady=10)
 
     delete_button = ctk.CTkButton(delete_student_frame, text="Delete", command=delete)
-    delete_button.pack(padx=10, pady=10)
+    delete_button.grid(row=1, column=0, columnspan=2, padx=10, pady=10)
 
     back_button = ctk.CTkButton(delete_student_frame, text="Back to Main Menu", command=main_menu)
-    back_button.pack(padx=10, pady=10)
+    back_button.grid(row=2, column=0, columnspan=2, padx=10, pady=10)
 
 
 def modify_student():
     show_frame(enter_student_frame)
-    ctk.CTkLabel(enter_student_frame, text="Enter Student ID").pack(padx=10, pady=10)
-    entry_student_id = ctk.CTkEntry(enter_student_frame)
-    entry_student_id.pack(padx=10, pady=10)
+    messagebox.showinfo("Exam","make sure you know student id or go to show students")
+    window.geometry("400x600")
 
+    # Clear previous widgets if needed
+    for widget in enter_student_frame.winfo_children():
+        widget.grid_forget()
+
+    # Label and Entry for Student ID
+    ctk.CTkLabel(enter_student_frame, text="Enter Student ID").grid(row=0, column=0, padx=10, pady=10)
+    entry_student_id = ctk.CTkEntry(enter_student_frame)
+    entry_student_id.grid(row=0, column=1, padx=10, pady=10)
+
+    # Function to fetch the student details
     def fetch_student():
         student_id = entry_student_id.get()
-        cursor.execute("SELECT * FROM students WHERE id = %s", (student_id,))
-        student = cursor.fetchone()
+
         if student_id == '':
             messagebox.showerror("ERROR", "Fill out the entry")
-            
-        elif not student:
-            messagebox.showerror("Error", "Student not found")
             return
+
+        # Query to find the student
+        cursor.execute("SELECT * FROM students WHERE id = %s", (student_id,))
+        student = cursor.fetchone()
+
+        if not student:
+            messagebox.showerror("Error", "Student not found")
         else:
+            # If student is found, show the update form
             show_update_form(student_id, student)
 
+
     submit_button = ctk.CTkButton(enter_student_frame, text="Submit", command=fetch_student)
-    submit_button.pack(padx=10, pady=10)
+    submit_button.grid(row=1, column=0, columnspan=2, padx=10, pady=10)
+
+
     back_button = ctk.CTkButton(enter_student_frame, text="Back to Main Menu", command=main_menu)
-    back_button.pack(padx=10, pady=10)
+    back_button.grid(row=2, column=0, columnspan=2, padx=10, pady=10)
+
+
+
 
 
 def show_update_form(student_id, student):
     show_frame(modify_student_frame)
 
-    # Create two sub-frames for splitting the content
+
     left_frame = ctk.CTkFrame(modify_student_frame)
     left_frame.grid(row=0, column=0, padx=10, pady=10, sticky="nsew")
     right_frame = ctk.CTkFrame(modify_student_frame)
@@ -504,6 +593,7 @@ def show_update_form(student_id, student):
     back_button.grid(row=2, column=0, columnspan=2, padx=10, pady=10)
 
 
+
 def show_group_students():
     show_frame(show_group_students_frame)
 
@@ -527,20 +617,42 @@ def show_group_students():
         messagebox.showinfo("Group Students", output)
 
     label_group = ctk.CTkLabel(show_group_students_frame, text="Select Group")
-    label_group.pack(padx=10, pady=10)
+    label_group.grid(row=0, column=0, padx=10, pady=10)
+
+
     group_var = tk.StringVar()
     groups = ['DEV101', 'DEV102', 'DEV103', 'DEV104', 'DEV105', 'DEV106', 'DEV107', 'DEV108', 'DEV109']
     group_var.set(groups[0])
     group_menu = ctk.CTkOptionMenu(show_group_students_frame, variable=group_var, values=groups)
-    group_menu.pack(padx=10, pady=10)
+    group_menu.grid(row=0, column=1, padx=10, pady=10)
+
 
     fetch_button = ctk.CTkButton(show_group_students_frame, text="Fetch Students", command=fetch_group_students)
-    fetch_button.pack(padx=10, pady=10)
+    fetch_button.grid(row=1, column=0, columnspan=2, padx=10, pady=10)
+
 
     back_button = ctk.CTkButton(show_group_students_frame, text="Back to Main Menu", command=main_menu)
-    back_button.pack(padx=10, pady=10)
+    back_button.grid(row=2, column=0, columnspan=2, padx=10, pady=10)
+    
+    
+light_mode = True 
 
-# Main Frame (Main Menu)
+def switch_mode(b):
+    global light_mode
+    
+    light_mode = not light_mode 
+
+    if light_mode:
+        ctk.set_appearance_mode("light")
+        ctk.set_default_color_theme("light-blue")
+        b.configure(text="⚪", fg_color="white")
+    else:
+        ctk.set_appearance_mode("dark")
+        ctk.set_default_color_theme("dark-blue")
+        b.configure(text="⚫️", fg_color="black")
+
+
+
 main_frame.pack(fill='both', expand=True)
 
 button_width = 200  
@@ -553,5 +665,8 @@ ctk.CTkButton(main_frame, text="Show Student Information by ID", command=show_st
 ctk.CTkButton(main_frame, text="Delete Student", command=delete_student, width=button_width, height=button_height).pack(pady=5)
 ctk.CTkButton(main_frame, text="Modify Student", command=modify_student, width=button_width, height=button_height).pack(pady=5)
 ctk.CTkButton(main_frame, text="Show Group Students", command=show_group_students, width=button_width, height=button_height).pack(pady=5)
+b = ctk.CTkButton(main_frame, text="⚪",command=lambda:switch_mode(b),  width=30, height=30, corner_radius=15, border_width=2, fg_color="white").place(x=10, y=10)
+
+
 
 window.mainloop()
