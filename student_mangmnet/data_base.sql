@@ -54,6 +54,8 @@ VALUES
 (14, 'Cybersecurity'),
 (15, 'Software Engineering');
 
+
+--Do Not insert this infotmation 'til u tryed python fille!!
 INSERT INTO students(first_name, last_name, age, group_name)
 VALUES
 ("Ziyad", "Tber", 20, 'DEV108'),
