@@ -122,6 +122,19 @@ li:hover {
     padding: 10px;
     border-radius: 5px;
     text-align: center;
+    animation: ziyad 0.9s ease;
+  
+  }
+
+  @keyframes ziyad {
+    from {
+      transform: translateX(150px);
+      opacity: 0;
+    }
+    to {
+      transform: translateX(0);
+      opacity: 1;
+    }
   }
 
   .user ul {
@@ -334,5 +347,12 @@ img{
   transform: scale(0.9);
 }
 
+@media screen and (max-width:768px){
 
+  .buttons{
+    width: 100%;
+    display: flex;
+  }
+  
+}
 
