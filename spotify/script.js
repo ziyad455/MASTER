@@ -25,11 +25,25 @@ images.forEach(im => {
 document.addEventListener("DOMContentLoaded", function () {
   const menuBtn = document.getElementById("menu-btn");
   const navMenu = document.getElementById("nav-menu");
+  const icon = document.querySelector('#menu-btn i');
 
   menuBtn.addEventListener("click", function () {
     navMenu.classList.toggle("show");
+    icon.classList.toggle('fa-close')
+    icon.classList.toggle('fa-bars')
   });
 });
 
+window.addEventListener('click', function(e) {
+  const navMenu = document.getElementById("nav-menu");
+  const menuBtn = document.getElementById("menu-btn");
+  const icon = document.querySelector('#menu-btn i');
 
+  if (!navMenu.contains(e.target) && !menuBtn.contains(e.target)) {
+      navMenu.classList.remove("show");
+      icon.classList.toggle('fa-close')
+      icon.classList.toggle('fa-bars')
+      
+  }
+});
 
