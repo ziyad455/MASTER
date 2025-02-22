@@ -18,6 +18,7 @@ const contai = document.querySelector('.contai')
 const profileprivacy = document.querySelectorAll('.profile-privacy')
 const postp = document.querySelectorAll('.post p')
 const l = document.querySelector('.contai button')
+const a  = document.querySelectorAll('a')
 
 
 profile.addEventListener('click', (e) => {
@@ -55,5 +56,6 @@ to.addEventListener('click', () => {
   profileprivacy.forEach(e => e.classList.toggle('darck'));
   postp.forEach(e => e.classList.toggle('darck'));
   l.classList.toggle('darck');
+  a.forEach(e => e.classList.toggle('darck'));
 
 })
