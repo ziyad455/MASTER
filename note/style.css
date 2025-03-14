@@ -1,0 +1,73 @@
+
+
+
+
+.note {
+  background: linear-gradient(135deg, #ffffff, #f9fafb);
+  border-radius: 20px;
+  padding: 30px;
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  border-left: 5px solid #4a90e2;
+  margin-bottom: 30px;
+  height:auto !important;
+  word-wrap: break-word;
+  word-break: break-word;
+
+
+}
+
+
+.note:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 15px 30px rgba(0, 0, 0, 0.15);
+}
+
+.note h2 {
+  font-size: 26px;
+  font-weight: 700;
+  color: #333;
+  margin-bottom: 15px;
+}
+
+.note .content {
+  font-size: 16px;
+  color: #555;
+  line-height: 1.7;
+  margin-bottom: 25px;
+}
+
+.note-actions {
+  display: flex;
+  gap: 10px;
+}
+
+.note-actions .btn {
+  padding: 10px 20px;
+  border-radius: 10px;
+  font-weight: 600;
+  font-size: 15px;
+  transition: background-color 0.3s ease, transform 0.2s ease;
+}
+
+.note-actions .btn-primary {
+  background-color: #4a90e2;
+  border: none;
+  color: white;
+}
+
+.note-actions .btn-primary:hover {
+  background-color: #357ab8;
+  transform: scale(1.05);
+}
+
+.note-actions .btn-danger {
+  background-color: #e74c3c;
+  border: none;
+  color: white;
+}
+
+.note-actions .btn-danger:hover {
+  background-color: #c0392b;
+  transform: scale(1.05);
+}
