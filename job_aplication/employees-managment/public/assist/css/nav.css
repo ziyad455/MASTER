@@ -1,0 +1,63 @@
+:root {
+  --primary-color: #2563EB;     
+  --background-color: #F3F4F6;  
+  --text-color: #1E293B;        
+
+  --gradient: linear-gradient(135deg, #2563EB, #1E3A8A);
+}
+body {
+  overflow: hidden !important;
+  font-family: Arial, sans-serif;
+}
+li{
+  scale: 1.4 !important;
+  margin-left: 15px !important;
+}
+
+.active {
+  color: var(--primary-color);             
+  position: relative;
+}
+
+.active::after {
+  content: '';
+  position: absolute;
+  left: 0;
+  bottom: -2px;
+  width: 100%;
+  height: 2px;
+  background-color: var(--primary-color);  
+}
+
+#menu{
+  transform: translate(150%, 0);
+  transition: transform 0.4s ease-in-out;
+}
+#menu.show{
+  transform: translate(0, 0) !important;
+}
+
+#employeeSidebar {
+  transition: transform 0.3s ease-in-out;
+}
+
+
+body.sidebar-open {
+  overflow: hidden;
+}
+
+
+#sidebarBackdrop {
+  transition: opacity 0.3s ease;
+}
+
+
+#employeeSidebar {
+  box-shadow: -4px 0 6px -1px rgba(0, 0, 0, 0.1);
+}
+
+
+#closeSidebar:hover {
+  transform: rotate(90deg);
+  transition: transform 0.2s ease;
+}

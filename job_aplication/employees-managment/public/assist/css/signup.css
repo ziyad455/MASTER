@@ -1,0 +1,55 @@
+/*body{
+  background-image: url('https://t3.ftcdn.net/jpg/03/29/74/14/360_F_329741445_UqQs5EilomwBp9Lr9RKV9ZlGIpC2S94n.jpg') !important;
+  background-size: cover;
+  background-position: center;
+
+
+}*/
+
+.gradient-bg {
+  background: linear-gradient(135deg, #2563EB, #1E3A8A);
+}
+.gradient-text {
+  background: linear-gradient(135deg, #2563EB, #1E3A8A);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+textarea {
+  min-height: 120px;
+}
+
+.input-control.invalid {
+  position: relative; 
+  border: 1px solid #FF0000 !important;
+
+  outline: none !important;
+  transition: all 0.3s ease-in-out !important;
+  color: black !important;
+
+}
+
+.input-control.invalid:focus {
+  border: #FF0000 !important;
+  box-shadow: 0 0 5px #FF0000 !important;
+}
+
+
+.error {
+  color: #FF0000 !important;
+  font-size: 15px !important;
+  margin-top: 5px !important;
+}
+
+
+.has-file {
+  border-color: #3b82f6;
+  background-color: #eff6ff;
+  transition: all 0.3s ease;
+}
+
+
+
+#file-selected.show {
+  display: flex;
+}

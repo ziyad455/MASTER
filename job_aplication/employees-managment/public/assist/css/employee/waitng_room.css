@@ -1,0 +1,42 @@
+/* Custom animations */
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(10px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+/* Apply animation to main card */
+.bg-white {
+  animation: fadeIn 0.5s ease-out forwards;
+}
+
+/* Enhance the gradient header */
+.bg-gradient-to-r {
+  background-size: 200% auto;
+  transition: background-position 0.5s ease;
+}
+
+.bg-gradient-to-r:hover {
+  background-position: right center;
+}
+
+/* Pulse animation for the checkmark */
+@keyframes pulse {
+  0% { transform: scale(1); }
+  50% { transform: scale(1.1); }
+  100% { transform: scale(1); }
+}
+
+svg {
+  animation: pulse 1.5s infinite;
+}
+
+/* Responsive adjustments */
+@media (max-width: 640px) {
+  .flex-col {
+    flex-direction: column;
+  }
+  
+  .space-y-6 > * + * {
+    margin-top: 1.5rem;
+  }
+}

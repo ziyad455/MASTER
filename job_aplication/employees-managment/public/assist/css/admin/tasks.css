@@ -1,0 +1,39 @@
+body{
+  overflow-y: scroll !important;
+}
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(10px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+
+.bg-white {
+  animation: fadeIn 0.3s ease-out forwards;
+}
+
+.grid > div:nth-child(1) { animation-delay: 0.1s; }
+.grid > div:nth-child(2) { animation-delay: 0.2s; }
+.grid > div:nth-child(3) { animation-delay: 0.3s; }
+.grid > div:nth-child(4) { animation-delay: 0.4s; }
+
+
+.p-4.border:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+  transition: all 0.2s ease;
+}
+
+
+span[class*="bg-"] {
+  transition: all 0.2s ease;
+}
+
+@media (max-width: 768px) {
+  .grid.grid-cols-4 {
+    grid-template-columns: repeat(2, 1fr);
+  }
+  
+  .grid.grid-cols-2 {
+    grid-template-columns: 1fr;
+  }
+}

@@ -1,0 +1,22 @@
+
+.nav-gradient {
+  background: linear-gradient(135deg, #2563EB 0%, #1E40AF 100%);
+}
+
+
+a, button {
+  transition: all 0.2s ease;
+}
+
+
+.hover\:bg-blue-700:hover {
+  transform: translateY(-1px);
+}
+
+
+@media (max-width: 640px) {
+  .hero-actions {
+    flex-direction: column;
+    gap: 0.75rem;
+  }
+}

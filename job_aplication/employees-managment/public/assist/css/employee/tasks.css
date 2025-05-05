@@ -1,0 +1,141 @@
+body{
+  overflow-y: scroll !important;
+}
+.container {
+  max-width: 1280px;
+}
+
+.bg-indigo-100.text-indigo-800 {
+  transition: all 0.2s ease;
+}
+
+.bg-indigo-100.text-indigo-800:hover {
+  background-color: #a5b4fc;
+}
+
+.bg-indigo-600.text-white {
+  transition: all 0.2s ease;
+}
+
+
+.rounded-full {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+}
+
+
+tbody tr {
+  transition: background-color 0.2s ease;
+}
+
+tbody tr:hover {
+  background-color: #f9fafb;
+}
+
+
+a.text-indigo-600, 
+a.text-gray-600 {
+  transition: all 0.2s ease;
+  text-decoration: none;
+}
+
+a.text-indigo-600:hover {
+  color: #4338ca;
+  text-decoration: underline;
+}
+
+a.text-gray-600:hover {
+  color: #1f2937;
+  text-decoration: underline;
+}
+
+input:focus {
+  box-shadow: 0 0 0 2px rgba(79, 70, 229, 0.2);
+  outline: none;
+}
+
+
+.line-through {
+  text-decoration: line-through;
+  color: #6b7280;
+}
+
+
+.bg-yellow-100.text-yellow-800 {
+  background-color: #fef3c7;
+  color: #92400e;
+}
+
+.bg-blue-100.text-blue-800 {
+  background-color: #dbeafe;
+  color: #1e40af;
+}
+
+.bg-green-100.text-green-800 {
+  background-color: #d1fae5;
+  color: #065f46;
+}
+
+
+@media (max-width: 768px) {
+  .container {
+    padding-left: 1rem;
+    padding-right: 1rem;
+  }
+  
+
+  .overflow-hidden {
+    margin-left: -1rem;
+    margin-right: -1rem;
+    width: calc(100% + 2rem);
+  }
+  
+ 
+  .flex-wrap.gap-2 {
+    gap: 0.5rem;
+  }
+  
+  .px-4.py-2 {
+    padding: 0.5rem 0.75rem;
+    font-size: 0.875rem;
+  }
+}
+
+
+.bg-indigo-50.border-indigo-500 {
+  font-weight: 600;
+}
+
+/* Pagination hover effects */
+nav[aria-label="Pagination"] a:hover {
+  background-color: #f3f4f6;
+}
+
+
+/* Status indicator dots */
+.status-dot {
+  display: inline-block;
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  margin-right: 6px;
+}
+
+/* Modal transitions */
+#statusModal {
+  transition: opacity 0.3s ease;
+}
+
+/* Status option hover states */
+.status-option:hover {
+  transform: translateY(-1px);
+  transition: all 0.2s ease;
+}
+
+/* Active status option */
+.status-option.active {
+  border-color: #6366f1;
+  background-color: #eef2ff;
+}
+

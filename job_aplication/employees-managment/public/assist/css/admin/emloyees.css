@@ -1,0 +1,30 @@
+/* Table row hover effect */
+tr:hover {
+  background-color: rgba(79, 70, 229, 0.03) !important;
+}
+
+/* Status badge styling */
+.bg-blue-100 {
+  transition: all 0.2s ease;
+}
+
+/* Button hover effects */
+.hover\:bg-indigo-50:hover {
+  transform: translateY(-1px);
+}
+
+/* Modal transitions */
+.fixed {
+  transition: opacity 0.3s ease;
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+  .flex-col.md\:flex-row {
+    flex-direction: column;
+  }
+  
+  .space-x-4 {
+    margin-top: 1rem;
+  }
+}

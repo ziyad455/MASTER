@@ -1,0 +1,48 @@
+:root {
+  --primary-color: #2563EB;
+  --background-color: #F3F4F6;
+  --text-color: #1E293B;
+}
+
+
+.main-content {
+  margin-top: 4rem;
+}
+body{
+  overflow-y: scroll !important;
+}
+
+
+.stat-card {
+  transition: all 0.3s ease;
+}
+
+.stat-card:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
+}
+
+
+.table-row:hover {
+  background-color: rgba(37, 99, 235, 0.05);
+}
+
+
+.activity-item {
+  border-left: 3px solid transparent;
+  transition: all 0.2s ease;
+}
+
+.activity-item:hover {
+  border-left-color: var(--primary-color);
+  background-color: rgba(37, 99, 235, 0.03);
+}
+
+
+@media (max-width: 768px) {
+  .stat-grid {
+    grid-template-columns: 1fr;
+  }
+  
+
+}
