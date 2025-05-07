@@ -14,7 +14,7 @@ This is a simple backend project built with PHP that simulates a job application
 
 - PHP (Core)
 - MySQL (Database)
-- HTML/CSS (Frontend structure)
+- HTML/CSS/JS/TAILWIND (Frontend structure)
 
 ## Setup Instructions
 
