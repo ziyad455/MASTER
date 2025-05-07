@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&family=Open+Sans:wght@400;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <header>
+    <div class="container">
+      <h1>Real Madrid Matches</h1>
+    </div>
+  </header>
+  
+  <div class="container">
+    <div class="season-selector">
+      <select id="season-select" title="Select Season">
+        <option value="2024">2024-2025 Season</option>
+        <option value="2023">2023-2024 Season</option>
+        <option value="2022">2022-2023 Season</option>
+      </select>
+    </div>
+    
+    <div id="loading" class="loading">Loading matches...</div>
+    <div id="error" class="error" ></div>
+    
+    <div id="matches-container" class="matches-container"></div>
+  </div>
+  <script src="script.js"></script>
+</body>
+</html>
