@@ -21,8 +21,8 @@ A simple web application that fetches and displays Real Madrid's matches by seas
 
 ### 1. Clone the Repository
 ```bash
-git clone https://github.com/your-username/real-madrid-matches.git
-cd real-madrid-matches
+git clone [https://github.com/ziyad455/MASTER/tree/main/foot_api].git
+cd foot_api
 ```
 
 ### 2. Add Your API Key
