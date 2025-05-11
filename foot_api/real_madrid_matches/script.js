@@ -1,4 +1,7 @@
-const apiKey = '1815c132ab794689a8fcd2eefc2c95fb';
+
+
+
+const apiKey = 'Your_key_here'; // Replace with your actual API key
 const teamId = 86;
 
 let currentSeason = 2024;

@@ -12,7 +12,7 @@
   0% { transform: scale(1); }
   50% { transform: scale(1.05); }
   100% { transform: scale(1); }
-}
+}  
 
 .text-indigo-600 {
   animation: pulse 2s infinite;
