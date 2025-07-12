@@ -1,0 +1,205 @@
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'Segoe UI', system-ui, sans-serif;
+      background-color: #f5f7fa;
+      padding: 20px;
+    }
+
+    .page-section {
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+
+    .admin-card {
+      background: white;
+      border-radius: 12px;
+      box-shadow: 0 4px 6px rgba(0, 0, 0, 0.07);
+      padding: 24px;
+    }
+
+    .text-xl {
+      font-size: 1.25rem;
+    }
+
+    .font-bold {
+      font-weight: 700;
+    }
+
+    .text-gray-900 {
+      color: #111827;
+    }
+
+    .mb-6 {
+      margin-bottom: 1.5rem;
+    }
+
+    .filter-container {
+      display: flex;
+      gap: 10px;
+      margin-bottom: 20px;
+      flex-wrap: wrap;
+    }
+
+    .filter-btn {
+      padding: 8px 16px;
+      border: 2px solid #e5e7eb;
+      background: white;
+      color: #6b7280;
+      border-radius: 8px;
+      cursor: pointer;
+      font-size: 14px;
+      font-weight: 500;
+      transition: all 0.2s ease;
+    }
+
+    .filter-btn:hover {
+      border-color: #3b82f6;
+      color: #3b82f6;
+    }
+
+    .filter-btn.active {
+      background: #3b82f6;
+      color: white;
+      border-color: #3b82f6;
+    }
+
+    .overflow-x-auto {
+      overflow-x: auto;
+    }
+
+    .w-full {
+      width: 100%;
+    }
+
+    table {
+      border-collapse: collapse;
+      min-width: 800px;
+    }
+
+    thead tr {
+      border-bottom: 2px solid #e5e7eb;
+    }
+
+    th, td {
+      text-align: left;
+      padding: 12px 16px;
+      border-bottom: 1px solid #f3f4f6;
+    }
+
+    th {
+      font-weight: 600;
+      color: #374151;
+      background: #f9fafb;
+    }
+
+    tbody tr:hover {
+      background: #f9fafb;
+    }
+
+    .status-badge {
+      padding: 4px 12px;
+      border-radius: 20px;
+      font-size: 12px;
+      font-weight: 600;
+      text-transform: uppercase;
+    }
+
+    .status-pending {
+      background: #fef3c7;
+      color: #92400e;
+    }
+
+    .status-confirmed {
+      background: #d1fae5;
+      color: #065f46;
+    }
+
+    .status-cancelled {
+      background: #fee2e2;
+      color: #991b1b;
+    }
+
+    .actions-container {
+      display: flex;
+      gap: 5px;
+      align-items: center;
+    }
+
+    .action-btn {
+      padding: 6px 12px;
+      border: none;
+      border-radius: 6px;
+      font-size: 12px;
+      font-weight: 500;
+      cursor: pointer;
+      transition: all 0.2s ease;
+      min-width: 60px;
+    }
+
+    .btn-confirm {
+      background: #10b981;
+      color: white;
+    }
+
+    .btn-confirm:hover {
+      background: #059669;
+      transform: translateY(-1px);
+    }
+
+    .btn-cancel {
+      background: #ef4444;
+      color: white;
+    }
+
+    .btn-cancel:hover {
+      background: #dc2626;
+      transform: translateY(-1px);
+    }
+
+    .no-actions {
+      color: #9ca3af;
+      font-size: 12px;
+      font-style: italic;
+    }
+
+    .loading {
+      text-align: center;
+      padding: 40px;
+      color: #6b7280;
+    }
+
+    .no-data {
+      text-align: center;
+      padding: 40px;
+      color: #6b7280;
+    }
+
+    @media (max-width: 768px) {
+      .filter-container {
+        justify-content: center;
+      }
+
+      .admin-card {
+        padding: 16px;
+      }
+
+      th, td {
+        padding: 8px 12px;
+        font-size: 14px;
+      }
+
+      .actions-container {
+        flex-direction: column;
+        gap: 3px;
+      }
+
+      .action-btn {
+        width: 100%;
+        min-width: unset;
+      }
+    }
